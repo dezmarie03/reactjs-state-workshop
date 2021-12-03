@@ -1,21 +1,5 @@
 import { Component } from "react";
 
-const increment = (state, props) => {
-  const { max, step } = props;
-
-  if (state.count >= max) return;
-
-  return { count: state.count + step };
-}
-
-const decrement = (state, props) => {
-  const { step } = props;
-
-  if (state.count == 0) return;
-
-  return { count: state.count - step };
-}
-
 class ClassCounter extends Component {
   constructor(props) {
     super(props);
@@ -26,18 +10,35 @@ class ClassCounter extends Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.reset = this.reset.bind(this);
+    this.updateDocumentTitle = this.updateDocumentTitle.bind(this);
+  }
+
+  updateDocumentTitle() {
+    document.title = `Count: ${this.state.count}`;
   }
 
   increment() {
-    this.setState(increment);
+    this.setState((state, props) => {
+      const { max, step } = props;
+
+      if (state.count >= max) return;
+
+      return { count: state.count + step };
+    }, this.updateDocumentTitle);
   }
 
   decrement() {
-    this.setState(decrement);
+    this.setState((state, props) => {
+      const { step } = props;
+
+      if (state.count == 0) return;
+
+      return { count: state.count - step };
+    }, this.updateDocumentTitle);
   }
 
   reset() {
-    this.setState({ count: 0 });
+    this.setState({ count: 0 }, this.updateDocumentTitle);
   }
 
   render() {
