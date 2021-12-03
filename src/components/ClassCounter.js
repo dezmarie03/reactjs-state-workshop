@@ -1,5 +1,21 @@
 import { Component } from "react";
 
+const increment = (state, props) => {
+  const { max, step } = props;
+
+  if (state.count >= max) return;
+
+  return { count: state.count + step };
+}
+
+const decrement = (state, props) => {
+  const { step } = props;
+
+  if (state.count == 0) return;
+
+  return { count: state.count - step };
+}
+
 class ClassCounter extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +29,11 @@ class ClassCounter extends Component {
   }
 
   increment() {
-    this.setState({ count: this.state.count + 1 });
+    this.setState(increment);
   }
 
   decrement() {
-    this.setState({ count: this.state.count - 1 });
+    this.setState(decrement);
   }
 
   reset() {

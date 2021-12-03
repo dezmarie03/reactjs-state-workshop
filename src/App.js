@@ -5,7 +5,7 @@ import ClassCounter from './components/ClassCounter';
 function App() {
   return (
     <div className="App">
-      <ClassCounter />
+      <ClassCounter max={25} step={5} />
     </div>
   );
 }
