@@ -1,7 +1,29 @@
 import { useState, useEffect } from "react";
 
+const storeStateInLocalStorage = count => {
+  localStorage.setItem('counterState', JSON.stringify({ count }));
+};
+
+const useLocalStorage = (initialState, key) => {
+  const get = () => {
+    const storage = localStorage.getItem(key);
+
+    if (storage) return JSON.parse(storage).value;
+
+    return initialState;
+  }
+
+  const [value, setValue] = useState(get());
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify({ value }));
+  }, [key, value]);
+
+  return [value, setValue];
+}
+
 const HooksCounter = ({ max, step }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useLocalStorage(0, 'count');
 
   const increment = () => {
     setCount(c => {
@@ -22,7 +44,11 @@ const HooksCounter = ({ max, step }) => {
   const reset = () => setCount(0);
 
   useEffect(() => {
-    document.title = `Count: ${count}`;
+    document.title = `Counter: ${count}`;
+  }, [count]);
+
+  useEffect(() => {
+    storeStateInLocalStorage(count);
   }, [count]);
 
   return (
