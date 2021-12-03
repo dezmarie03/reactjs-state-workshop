@@ -31,7 +31,7 @@ class ClassCounter extends Component {
     this.setState((state, props) => {
       const { step } = props;
 
-      if (state.count == 0) return;
+      if (state.count === 0) return;
 
       return { count: state.count - step };
     }, this.updateDocumentTitle);
