@@ -2,7 +2,7 @@ import './App.css';
 
 import ClassCounter from './components/ClassCounter';
 import HooksCounter from './components/HooksCounter';
-import ReducerList from './components/ReducerList';
+import ContextItemList from './components/ContextItemList';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <hr />
       <HooksCounter max={25} step={5} />
       <hr />
-      <ReducerList />
+      <ContextItemList />
     </div>
   );
 }
