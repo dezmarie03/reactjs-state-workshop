@@ -22,10 +22,14 @@ const Item = React.memo(({ item }) => {
 });
 
 const Items = () => {
-  const { items } = useContext(ItemContext);
+  const { items, undoItem, redoItem, isPast, isFuture } = useContext(ItemContext);
+  console.log({ undoItem, redoItem, isPast, isFuture });
+
   return (
     <section className="items">
       <h2>Items ({items.length}) Context Component</h2>
+      <button disabled={!isPast} onClick={undoItem}>Undo</button>
+      <button disabled={!isFuture} onClick={redoItem}>Redo</button>
       {items.map(item => (
         <Item key={item.id} item={item} />
       ))}

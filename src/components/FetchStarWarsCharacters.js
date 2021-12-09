@@ -53,7 +53,7 @@ const fetchCharacters = dispatch => {
       type: ERROR,
       payload: { error }
     }));
-}
+};
 
 const useThunkReducer = (reducer, initialState) => {
   const [state, dispatch] = useReducer(reducer, initialState);
