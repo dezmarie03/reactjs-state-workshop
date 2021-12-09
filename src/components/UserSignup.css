@@ -1,0 +1,14 @@
+#user-signup {
+  text-align: center;
+}
+
+#user-signup input {
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+#user-signup input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  margin-right: 0.5rem;
+}

@@ -4,6 +4,7 @@ import ClassCounter from './components/ClassCounter';
 import HooksCounter from './components/HooksCounter';
 import ContextItemList from './components/ContextItemList';
 import FetchStarWarsCharacters from './components/FetchStarWarsCharacters';
+import UserSignup from './components/UserSignup';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <ContextItemList />
       <hr />
       <FetchStarWarsCharacters />
+      <hr />
+      <UserSignup />
     </div>
   );
 }
